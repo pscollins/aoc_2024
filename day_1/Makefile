@@ -1,3 +1,5 @@
+.PHONY: problem_2
+
 problem_1:
 	ghc ./problem_1.hs
 	./problem_1 problem_1_test.txt

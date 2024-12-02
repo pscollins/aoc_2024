@@ -1,5 +1,6 @@
 import System.Environment
 import Data.List (sort)
+import Debug.Trace
 
 main = do
   args <- getArgs
@@ -24,9 +25,6 @@ parseIn str =
 diff :: ([Int], [Int]) -> Int
 diff (l, r) =
   let
-    count_element x y count =
-      1 + count if x = y else count
-    full_count x = foldr (+) 0 (count_element x)
-    similarity x z = (full_count x)
-
-  foldr (+) 0 $ map abs $ zipWith (-) l r
+    similarity x = (x*) $ length $ filter (== x) r
+  in
+  foldr (+) 0 $ map similarity l
