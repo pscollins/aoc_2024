@@ -1,6 +1,6 @@
 .PHONY: force
 
-BUILD=stack ghc --package hspec --
+BUILD=stack ghc --package hspec --package regex-tdfa --
 
 %_build: %.hs force
 	$(BUILD) -o out.bin $<
