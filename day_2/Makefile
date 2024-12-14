@@ -4,7 +4,7 @@
 	ghc -o out.bin $<
 
 %_test: %_build
-	./out.bin $*_test.txt
+	./out.bin problem_3_test.txt
 
 %_solve: %_build
-	./out.bin $*_solve.txt
+	./out.bin problem_3_solve.txt
