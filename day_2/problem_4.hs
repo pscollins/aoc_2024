@@ -3,16 +3,33 @@
 import System.Environment
 import Data.List (sort)
 import Debug.Trace
-import Control.Exception.Assert
+
+import Test.Hspec
+import Test.Hspec.Core.Runner
+
+
+testAll :: Spec
+testAll = do
+  describe "simple" $ do
+    it "simple" $ do
+      1 `shouldBe` 1
+
+evalTests :: IO ()
+evalTests = do
+  (config, forest) <- evalSpec defaultConfig testAll
+  runSpecForest forest config
+  print "tests finished"
+  -- print summary
 
 main = do
   args <- getArgs
   content <- readFile (args !! 0)
-  -- print $ count $ isValid $ diff $ parseIn content
+  evalTests
+  print "hello world"
 
 
-parseIn :: String -> [[Int]]
-parseIn = map (map read . words) . lines
+-- parseIn :: String -> [[Int]]
+-- parseIn = map (map read . words) . lines
 
 
 -- diff :: [[Int]] -> [[Int]]
